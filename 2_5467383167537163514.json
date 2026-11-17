@@ -1,0 +1,134 @@
+[
+  {
+    "q": "Я скучаю по ... маме.",
+    "options": [
+      "моя",
+      "моей",
+      "мою"
+    ],
+    "answer": 1,
+    "topic": "Kelishiklar",
+    "explanation": "«Скучать по кому?» birikmasida bu misolda datelniy padej ishlatiladi: «по моей маме»."
+  },
+  {
+    "q": "Я интересуюсь русской ...",
+    "options": [
+      "литература",
+      "литературой",
+      "литературу"
+    ],
+    "answer": 1,
+    "topic": "Kelishiklar",
+    "explanation": "«Интересоваться чем?» savoli tvoritelniy padejni talab qiladi: «литературой»."
+  },
+  {
+    "q": "Я живу ... Ташкенте.",
+    "options": [
+      "в",
+      "на",
+      "из"
+    ],
+    "answer": 0,
+    "topic": "Predloglar",
+    "explanation": "Shahar ichida yashash joyi aytilganda «в Ташкенте» deyiladi."
+  },
+  {
+    "q": "Вчера я ... интересную книгу.",
+    "options": [
+      "читаю",
+      "прочитал",
+      "буду читать"
+    ],
+    "answer": 1,
+    "topic": "Fe’l turi va zamoni",
+    "explanation": "«Вчера» o‘tgan vaqtni bildiradi. Tugallangan harakat uchun bu gapda «прочитал» mos."
+  },
+  {
+    "q": "Моя сестра очень ...",
+    "options": [
+      "умный",
+      "умная",
+      "умное"
+    ],
+    "answer": 1,
+    "topic": "Jins va moslashuv",
+    "explanation": "«Сестра» — ayol jinsidagi ot. Sifat ham ayol jinsida: «умная»."
+  },
+  {
+    "q": "Мы ... в университете каждый день.",
+    "options": [
+      "учится",
+      "учимся",
+      "учусь"
+    ],
+    "answer": 1,
+    "topic": "Fe’l tuslanishi",
+    "explanation": "«Мы» olmoshi bilan fe’lning 1-shaxs ko‘plik shakli ishlatiladi: «учимся»."
+  },
+  {
+    "q": "Я горжусь ...",
+    "options": [
+      "ты",
+      "тобой",
+      "тебя"
+    ],
+    "answer": 1,
+    "topic": "Kelishiklar",
+    "explanation": "«Гордиться кем?» savoliga tvoritelniy padej javob beradi: «тобой»."
+  },
+  {
+    "q": "Она приехала ... Самарканда.",
+    "options": [
+      "из",
+      "в",
+      "на"
+    ],
+    "answer": 0,
+    "topic": "Predloglar",
+    "explanation": "Qayerdan? degan ma’noda shahar nomi bilan «из Самарканда» ishlatiladi."
+  },
+  {
+    "q": "Сейчас дети ... во дворе.",
+    "options": [
+      "играют",
+      "играл",
+      "играть"
+    ],
+    "answer": 0,
+    "topic": "Fe’l tuslanishi",
+    "explanation": "«Дети» — ko‘plik. Hozirgi zamonda mos shakl: «играют»."
+  },
+  {
+    "q": "Завтра я ... письмо.",
+    "options": [
+      "написал",
+      "пишу вчера",
+      "напишу"
+    ],
+    "answer": 2,
+    "topic": "Fe’l turi va zamoni",
+    "explanation": "«Завтра» kelasi vaqtni bildiradi. Bu gapda «напишу» mos keladi."
+  },
+  {
+    "q": "Я вижу красив... дом.",
+    "options": [
+      "ый",
+      "ая",
+      "ое"
+    ],
+    "answer": 0,
+    "topic": "Jins va moslashuv",
+    "explanation": "«Дом» — мужской род. Sifatning mos shakli: «красивый»."
+  },
+  {
+    "q": "Мы говорим ... русском языке.",
+    "options": [
+      "на",
+      "в",
+      "из"
+    ],
+    "answer": 0,
+    "topic": "Predloglar",
+    "explanation": "Tilni bilish yoki shu tilda gapirish ma’nosida «на русском языке» birikmasi ishlatiladi."
+  }
+]
