@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LINGVO MIRROR UZ — rus tilini o‘rganuvchilar uchun o‘zbekcha diagnostika platformasi.">
+<title>LINGVO MIRROR UZ</title>
+<style>
+:root{--ink:#17243b;--muted:#65738b;--blue:#315efb;--pale:#eef3ff;--line:#e5eaf2;--bg:#f7f9fd;--green:#16845b;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0}.nav{max-width:950px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{font-weight:850;font-size:19px}.brand span{color:var(--blue)}nav{display:flex;gap:16px;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:14px}
+.hero,main{max-width:950px;margin:auto;padding:28px 22px}.kicker{color:var(--blue);font-weight:800;font-size:12px;letter-spacing:1.2px}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.08;margin:12px 0}.lead,.sub{color:var(--muted);line-height:1.6}
+.panel,.tile{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.tile p{color:var(--muted);font-size:14px;line-height:1.5}
+.q{padding:17px 0;border-bottom:1px solid var(--line)}.q-title{font-weight:750;line-height:1.5}.opts{display:flex;gap:8px;flex-wrap:wrap}
+button{border:0;border-radius:11px;background:var(--blue);color:white;padding:12px 16px;font-weight:750;cursor:pointer}
+.opt{border:1px solid #d7deea;background:white;color:var(--ink);padding:9px 13px}.opt.selected{border-color:var(--blue);background:var(--pale);color:var(--blue)}
+button:disabled{opacity:.45}.secondary{background:var(--pale);color:var(--blue)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.note{font-size:14px;line-height:1.5}.good{color:var(--green)}.bad{color:var(--red)}
+.result{display:none;margin-top:18px;border-radius:14px;padding:18px;line-height:1.55;border:1px solid var(--line)}
+.high{background:#edf8f2;border-color:#b7e2ca}.mid{background:#fff8e8;border-color:#f0d99c}.low{background:#fff0ef;border-color:#f1c1bd}
+.score{font-size:22px;font-weight:850}.maprow{display:flex;justify-content:space-between;gap:12px;margin:10px 0;font-size:14px}
+.track{height:9px;background:#e9edf5;border-radius:99px;overflow:hidden;flex:1;max-width:150px}.fill{height:100%;background:var(--blue)}
+.practice{border:1px solid var(--line);padding:13px;border-radius:12px;margin-top:9px}.small{font-size:12px;color:var(--muted);line-height:1.5}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.nav{flex-direction:column}.panel,.tile{padding:16px}}
+</style></head>
+<body>
+<header><div class="nav"><div class="brand">LINGVO <span>MIRROR</span> UZ</div><nav><a href="#features">Imkoniyatlar</a><a href="#test">Diagnostika</a><a href="#about">Loyiha haqida</a></nav></div></header>
+<section class="hero"><div class="kicker">O‘zbek tilida tushuntiriladigan rus tili ta’limi</div>
+<h1>Rus tilini o‘rganing.<br><span style="color:#315efb">Xatolaringizni</span> anglang.</h1>
+<p class="lead">Diagnostika orqali qaysi grammatik mavzularni mustahkamlash kerakligini aniqlang. Savollar alohida faylda saqlanadi — keyinchalik ularni HTML kodini o‘zgartirmasdan yangilash mumkin.</p></section>
+<main>
+<section id="features"><h2>Platforma imkoniyatlari</h2><div class="grid">
+<article class="tile"><h3>🧭 Diagnostika</h3><p>Grammatik bilimlarni savollar orqali tekshirish.</p></article>
+<article class="tile"><h3>🪞 Xatolar xaritasi</h3><p>Qaysi mavzuda ko‘proq xato bo‘lganini ko‘rish.</p></article>
+<article class="tile"><h3>📚 Shaxsiy mashqlar</h3><p>Natijaga qarab mustahkamlash tavsiyalari.</p></article>
+</div></section>
+<section id="test" class="panel"><h2>Mirror Test</h2><p class="sub">Har savol uchun bitta javob tanlang. Natijani ko‘rish uchun barcha savollarga javob bering.</p>
+<div id="status" class="small">Savollar yuklanmoqda…</div><div id="questions"></div>
+<div class="actions"><button id="check" disabled>Natijani ko‘rish</button><button id="reset" class="secondary">Qayta boshlash</button></div><div id="result" class="result" aria-live="polite"></div>
+</section>
+<section id="about" class="panel"><h2>Loyiha haqida</h2><p class="sub">LINGVO MIRROR UZ — rus tilini o‘rganuvchilarga xatolarini ko‘rish, tushunish va mashq qilishga yordam beruvchi ta’lim prototipi.</p>
+<p class="small">Eslatma: bu versiyada AI, akkauntlar va server bazasi ulanmagan. Natijalar faqat shu sahifada hisoblanadi. Xatolar xaritasi javoblar bo‘yicha qiyin mavzularni ko‘rsatadi, xatoning aniq sababini isbotlamaydi.</p></section>
+</main><footer style="text-align:center;padding:22px;background:white;color:#65738b">© 2026 LINGVO MIRROR UZ · JSON asosidagi versiya</footer>
+<script>
+let questions=[],answers=[],finished=false;
+const $=id=>document.getElementById(id);
+const recommendations={
+"Kelishiklar":"«Кем? Чем? Кого? Чего?» savollarini takrorlang va fe’llar bilan kelishiklarni misollarda mashq qiling.",
+"Predloglar":"«в / на / из / с» predloglarini «Где? Куда? Откуда?» savollari bilan taqqoslang.",
+"Fe’l turi va zamoni":"«Что делать?» va «Что сделать?» savollarini, shuningdek kecha-hozir-ertaga vaqt ko‘rsatkichlarini takrorlang.",
+"Jins va moslashuv":"Мужской, женский va средний род otlarini sifatlar bilan birga mashq qiling.",
+"Fe’l tuslanishi":"Я, ты, он/она, мы, вы, они olmoshlari bilan fe’llarni tuslang."
+};
+async function loadQuestions(){
+ try{
+  const response=await fetch('./2_5467383167537163514.json');
+  if(!response.ok) throw new Error('2_5467383167537163514.json topilmadi');
+  questions=await response.json();
+  if(!Array.isArray(questions)||!questions.length) throw new Error('Savollar fayli bo‘sh yoki noto‘g‘ri formatda');
+  answers=Array(questions.length).fill(null);$('status').textContent=questions.length+' ta savol yuklandi.';render();
+ }catch(e){$('status').textContent='Savollar yuklanmadi. index.html va 2_5467383167537163514.json bir papkada ekanini tekshiring. ('+e.message+')';}
+}
+function render(){
+ const root=$('questions');root.innerHTML='';
+ questions.forEach((q,i)=>{
+  const d=document.createElement('div');d.className='q';
+  const p=document.createElement('p');p.className='q-title';p.textContent=(i+1)+'. '+q.q;d.appendChild(p);
+  const opts=document.createElement('div');opts.className='opts';
+  q.options.forEach((option,j)=>{const b=document.createElement('button');b.type='button';b.className='opt'+(answers[i]===j?' selected':'');b.textContent=option;b.disabled=finished;b.onclick=()=>{answers[i]=j;render()};opts.appendChild(b)});
+  if(finished){const note=document.createElement('p');note.className='note '+(answers[i]===q.answer?'good':'bad');note.textContent=(answers[i]===q.answer?'✓ To‘g‘ri. ':'✗ Sizning javobingiz: '+q.options[answers[i]]+'. To‘g‘ri javob: '+q.options[q.answer]+'. ')+q.explanation;d.appendChild(note)}
+  d.appendChild(opts);root.appendChild(d);
+ });
+ $('check').disabled=answers.some(a=>a===null)||finished;
+}
+function showResult(){
+ const score=answers.reduce((s,a,i)=>s+(a===questions[i].answer?1:0),0),topics={};
+ questions.forEach((q,i)=>{const t=q.topic||'Boshqa';if(!topics[t])topics[t]={right:0,total:0};topics[t].total++;if(answers[i]===q.answer)topics[t].right++});
+ const r=$('result');r.style.display='block';r.className='result '+(score/questions.length>=.8?'high':score/questions.length>=.55?'mid':'low');
+ let html='<div class="score">Natija: '+score+'/'+questions.length+'</div><b>'+(score/questions.length>=.8?'Yaxshi natija!':score/questions.length>=.55?'Yana biroz mashq kerak.':'Asosiy mavzularni mustahkamlash foydali bo‘ladi.')+'</b><p>Xatolar xaritasi:</p>';
+ Object.entries(topics).forEach(([t,x])=>{let pct=Math.round(x.right/x.total*100);html+='<div class="maprow"><span>'+t+' — '+x.right+'/'+x.total+'</span><span class="track"><span class="fill" style="display:block;width:'+pct+'%;height:100%"></span></span></div>'});
+ const weak=Object.keys(topics).filter(t=>topics[t].right<topics[t].total);
+ if(weak.length){html+='<h3>Tavsiya etiladigan mashqlar</h3>';weak.forEach(t=>html+='<div class="practice"><b>'+t+'</b><p>'+ (recommendations[t]||'Ushbu mavzuni misollar orqali takrorlang.')+'</p></div>')}
+ else html+='<p>Barcha savollarga to‘g‘ri javob berdingiz. Boshqa darajadagi topshiriqlarni ham sinab ko‘ring.</p>';
+ html+='<p class="small">Bu qisqa test rasmiy til darajasi bahosi emas. Natija faqat shu testdagi javoblaringizga asoslangan.</p>';r.innerHTML=html;
+}
+$('check').onclick=()=>{finished=true;render();showResult();$('result').scrollIntoView({behavior:'smooth',block:'nearest'})};
+$('reset').onclick=()=>{answers=Array(questions.length).fill(null);finished=false;$('result').style.display='none';render()};
+loadQuestions();
+</script></body></html>
